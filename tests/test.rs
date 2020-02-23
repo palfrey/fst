@@ -8,7 +8,7 @@ use fst::{self, Automaton, IntoStreamer, Streamer};
 
 static WORDS: &'static str = include_str!("../data/words-10000");
 
-fn get_set() -> Set {
+fn get_set() -> Set<Vec<u8>> {
     Set::from_iter(WORDS.lines()).unwrap()
 }
 
@@ -177,9 +177,9 @@ fn subsequence() {
 
 #[test]
 fn implements_default() {
-    let map: fst::Map = Default::default();
+    let map: fst::Map<Vec<u8>> = Default::default();
     assert!(map.is_empty());
 
-    let set: fst::Set = Default::default();
+    let set: fst::Set<Vec<u8>> = Default::default();
     assert!(set.is_empty());
 }
